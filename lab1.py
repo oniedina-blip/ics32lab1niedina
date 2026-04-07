@@ -18,8 +18,8 @@ def main():
   print('Please enter two numbers and an operator (+, -, *, /)')
   
   try:
-    val1 = float(input('Enter your first operand: ')
-    val2 = float(input('Enter your second operand: ')
+    val1 = float(input('Enter your first operand: '))
+    val2 = float(input('Enter your second operand: '))
     operatorq = input('Enter your desired operator (+, -, *, /): ')
     
     result = calculate(val1, val2, operatorq)
