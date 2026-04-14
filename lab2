@@ -1,0 +1,53 @@
+#Oleksandra
+#oniedina@uci.edu
+#37948370
+
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
+def div(a, b):
+    return a / b
+
+def mul(a, b):
+    return a * b
+
+
+def run():
+    while True:
+        try:
+            a = float(input("Enter left operand: "))
+            b = float(input("Enter right operand: "))
+            operator = input("What type of calculation would you like to perform (+, -, x, /)? ")
+
+            if operator == "+":
+                r = add(a, b)
+            elif operator == "-":
+                r = sub(a, b)
+            elif operator == "x":
+                r = mul(a, b)
+            elif operator == "/":
+                r = div(a, b)
+            else:
+                print("Unable to perform the desired calculation, please try again.")
+                continue
+
+            print(r)
+
+        except ValueError:
+            print("Invalid number input. Please start over.")
+            continue
+
+        except ZeroDivisionError:
+            print("Can't divide by zero. Please start over.")
+            continue
+
+        if input("Run another calculation (y/n)? ") != "y":
+            break
+
+
+if __name__ == "__main__":
+    print("Welcome to PyCalc!")
+    run()
