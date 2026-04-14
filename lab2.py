@@ -14,12 +14,11 @@ def div(a, b):
 def mul(a, b):
     return a * b
 
-
 def run():
     while True:
         try:
-            a = float(input("Enter left operand: "))
-            b = float(input("Enter right operand: "))
+            a = int(input("Enter left operand: "))
+            b = int(input("Enter right operand: "))
             operator = input("What type of calculation would you like to perform (+, -, x, /)? ")
 
             if operator == "+":
