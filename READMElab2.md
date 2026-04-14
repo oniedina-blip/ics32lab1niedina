@@ -4,7 +4,6 @@ divide without checking so it crashes on / 0
 no error handling so program stops instead of continuing
 
 what I did with lab2:
-float() instead of int() 
 try: for risky code
 except ValueError: catches bad inputs 
 except ZeroDivisionError: catches / 0
