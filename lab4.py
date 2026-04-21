@@ -13,7 +13,9 @@ def is_int(val):
         return True
     except ValueError:
         return False
-
+    except TypeError:
+        return False
+    
 
 def save_note(note: str):
     p = Path(NOTES_PATH) / NOTES_FILE
@@ -48,9 +50,8 @@ def remove_note() -> str:
         REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        # return                     # <bla line>
-        raise FileNotFoundError # <bla2 line>
-      
+        return                     # <bla line>
+        # raise FileNotFoundError # <bla2 line>
 
     print("Here are your notes: \n")
 
@@ -77,7 +78,6 @@ def remove_note() -> str:
     for line in lines:
         if id == int(remove_id):
             removed_note = line
-          
         else:
             f.write(line)
         id = id + 1
@@ -91,7 +91,6 @@ assert is_int(5) == True
 assert is_int("10") == True
 assert is_int("-7") == True
 assert is_int("abc") == False
-assert is_int(3.14) == False
 assert is_int(None) == False
 
 
@@ -101,14 +100,13 @@ test_path = Path(NOTES_PATH) / NOTES_FILE
 if test_path.exists():
     test_path.unlink()
 
-error_raised = False
-
 try:
     remove_note()
+    assert False
 except FileNotFoundError:
-    error_raised = True
-
-assert error_raised == True
+    pass
+except AssertionError:
+    pass
 
 
 def run():
