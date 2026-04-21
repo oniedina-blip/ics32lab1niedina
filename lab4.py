@@ -48,8 +48,8 @@ def remove_note() -> str:
         REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        return                     # <bla line>
-        # raise FileNotFoundError # <bla2 line>
+        # return                     # <bla line>
+        raise FileNotFoundError # <bla2 line>
       
 
     print("Here are your notes: \n")
@@ -96,17 +96,19 @@ assert is_int(None) == False
 
 
 # REQ-2 :: remove_note test
-try:
-    Path(NOTES_PATH, NOTES_FILE).unlink()
-except FileNotFoundError:
-    pass
+test_path = Path(NOTES_PATH) / NOTES_FILE
+
+if test_path.exists():
+    test_path.unlink()
+
+error_raised = False
 
 try:
     remove_note()
-    assert False
-  
 except FileNotFoundError:
-    assert True
+    error_raised = True
+
+assert error_raised == True
 
 
 def run():
