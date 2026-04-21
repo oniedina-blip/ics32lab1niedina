@@ -50,8 +50,8 @@ def remove_note() -> str:
         REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        return                     # <bla line>
-        # raise FileNotFoundError # <bla2 line>
+     # return                     # <bla line>
+       raise FileNotFoundError # <bla2 line>
 
     print("Here are your notes: \n")
 
@@ -104,8 +104,6 @@ try:
     remove_note()
     assert False
 except FileNotFoundError:
-    pass
-except AssertionError:
     pass
 
 
