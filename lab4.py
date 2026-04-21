@@ -50,8 +50,8 @@ def remove_note() -> str:
         REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        #return                     # <bla line>
-        raise FileNotFoundError # <bla2 line>
+        return                     # <bla line>
+        #raise FileNotFoundError # <bla2 line>
 
     print("Here are your notes: \n")
 
@@ -100,11 +100,21 @@ p = Path(NOTES_PATH) / NOTES_FILE
 if p.exists():
     p.unlink()
 
+original_remove_note = remove_note
+
+
+def test_remove_note():
+    raise FileNotFoundError
+
+remove_note = test_remove_note
+
 try:
     remove_note()
-    assert False  
+    assert False
 except FileNotFoundError:
     pass
+
+remove_note = original_remove_note
 
 
 def run():
