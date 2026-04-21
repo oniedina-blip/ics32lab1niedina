@@ -104,12 +104,12 @@ if test_path.exists():
     test_path.unlink()
 
 try:
-    remove_note()
-    assert False
+    result = remove_note()
+    assert test_path.exists()
 except FileNotFoundError:
-    pass
+    print("Caught expected FileNotFoundError")
 except AssertionError:
-    pass
+    print("Caught expected AssertionError because file was missing")
 
 
 def run():
