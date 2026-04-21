@@ -46,12 +46,12 @@ def remove_note() -> str:
     p = Path(NOTES_PATH) / NOTES_FILE
 
     if not p.exists():
-                """
+                        """
         REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        return                     # <bla line>
-       # raise FileNotFoundError # <bla2 line>
+        #return                     # <bla line>
+        raise FileNotFoundError # <bla2 line>
 
     print("Here are your notes: \n")
 
@@ -94,11 +94,23 @@ assert is_int("abc") == False
 assert is_int(None) == False
 
 
+# REQ-2 :: assert behavior
+p = Path(NOTES_PATH) / NOTES_FILE
+
+if p.exists():
+    p.unlink()
+
+try:
+    remove_note()
+    assert False  
+except FileNotFoundError:
+    pass
+
+
 def run():
     note = input("Please enter a note (enter :d to delete a note or :q to exit):  ")
     if note == ":d":
         note = remove_note()
-        assert note != None
         print(f"The following note has been removed: \n\n {note}")
     elif note == ":q":
         return
@@ -110,6 +122,5 @@ def run():
 if __name__ == "__main__":
     print("Welcome to PyNote! \n")
     read_notes()
-
     run()
     
