@@ -102,9 +102,9 @@ if p.exists():
 
 try:
     remove_note()
-    assert False, "REQ-2: AssertionError! FileNotFoundError was NOT raised."
+    assert False, "FileNotFoundError was not raised"
 except FileNotFoundError:
-    print("REQ-2 Test Passed: Caught expected FileNotFoundError.")
+    print("Requirement 2 passed: FileNotFoundError caught.")
 
 
 def run():
