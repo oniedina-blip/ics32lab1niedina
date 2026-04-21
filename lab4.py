@@ -50,8 +50,8 @@ def remove_note() -> str:
                 REQUIREMENT 3 - Should be very similar, custom message not required.
         - remove the return line and uncomment the raise line to complete 3.
         """
-        return                     # <bla line>
-        # raise FileNotFoundError  # <bla2 line>
+        #return                     # <bla line>
+        raise FileNotFoundError  # <bla2 line>
 
     print("Here are your notes: \n")
 
@@ -100,32 +100,27 @@ p = Path(NOTES_PATH) / NOTES_FILE
 if p.exists():
     p.unlink()
 
-original_remove_note = remove_note
-
-def fake_remove_note():
-    raise FileNotFoundError
-
-remove_note = fake_remove_note
-
 try:
     remove_note()
-    assert False
+    assert False, "REQ-2: AssertionError! FileNotFoundError was NOT raised."
 except FileNotFoundError:
-    pass
-  
-remove_note = original_remove_note
+    print("REQ-2 Test Passed: Caught expected FileNotFoundError.")
 
 
 def run():
-    note = input("Please enter a note (enter :d to delete a note or :q to exit):  ")
-    if note == ":d":
-        note = remove_note()
-        print(f"The following note has been removed: \n\n {note}")
-    elif note == ":q":
-        return
-    else:
-        save_note(note)
-    run()
+    try:
+        note = input("Please enter a note (enter :d to delete a note or :q to exit):  ")
+        if note == ":d":
+            note = remove_note()
+            print(f"The following note has been removed: \n\n {note}")
+        elif note == ":q":
+            return
+        else:
+            save_note(note)
+        run()
+    except FileNotFoundError:
+        print("Error: Cannot delete notes because pynote.txt does not exist.")
+        run()
 
 
 if __name__ == "__main__":
