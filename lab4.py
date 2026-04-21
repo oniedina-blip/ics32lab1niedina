@@ -77,13 +77,15 @@ def remove_note() -> str:
     return removed_note
 
 
-# REQ-1 :: is_int tests
+# REQ-1 
 assert is_int(5) == True
 assert is_int("10") == True
 assert is_int("abc") == False
+assert is_int(None) == False
+assert is_int(10.5) == False
 
 
-# REQ-2 :: Test for FileNotFoundError
+# REQ-2 
 p_test = Path(NOTES_PATH) / NOTES_FILE
 if p_test.exists():
     p_test.unlink()
@@ -92,7 +94,7 @@ try:
     remove_note()
     assert False, "FileNotFoundError was not raised"
 except FileNotFoundError:
-    pass
+    print("Requirement 2 passed")
 
 
 def run():
