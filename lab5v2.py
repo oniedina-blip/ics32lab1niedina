@@ -1,4 +1,4 @@
-# lab5.py
+# lab5v2.py
 
 # Starter code for lab 5 in ICS 32 Programming with Software Libraries in Python
 
